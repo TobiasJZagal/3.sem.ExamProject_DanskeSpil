@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>fsdf</div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", init);
+
+      const people = {
+        Name: "-student-first-name-",
+        Location: "-student-last-name-",
+        house: "-student-house-",
+        image: "-student-image-"
+      };
+
+      let peopleList = [];
+      fsdf;
+      function init() {
+        let person = Object.create(people);
+        person.Name = "tobias";
+        person.Location = "danmark";
+
+        person.image = "lol no";
+
+        console.log("step 1");
+        console.log(person);
+
+        step2(person);
+        step3();
+      }
+
+      function step2(person) {
+        person.house = "smol";
+
+        console.log("step 2");
+        console.log(person);
+
+        peopleList.push(person);
+        console.log(peopleList);
+      }
+
+      function step3() {
+        let person = Object.create(people);
+        person.Name = "Joe";
+        person.house = "prollySmol";
+        person.image = "idunno";
+        person.Location = "bingbong";
+
+        peopleList.push(person);
+        console.log(peopleList);
+
+        step4();
+      }
+
+      function step4() {
+        peopleList[1].Name = "joebidenlmao";
+        console.table(peopleList);
+      }
+    </script>
+  </body>
+</html>
