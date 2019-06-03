@@ -14,7 +14,7 @@
 
       body {
         margin: 0;
-        background-color: rgb(82, 82, 82);
+        background-color: rgb(51, 51, 51);
       }
 
       .index {
@@ -30,6 +30,7 @@
 
       .bingoSpil {
         background-color: blue;
+
         grid-area: 4/5/4/9;
       }
 
@@ -47,7 +48,7 @@
         grid-area: 6/7/6/7;
       }
 
-      .wonForm {
+      .Form {
         background-color: #3cbc8d;
         margin: 0;
         margin-top: 5em;
@@ -55,14 +56,37 @@
         height: 550px;
         width: 400px;
         margin-bottom: 2em;
+      }
+
+      .FormSignup {
+        border-radius: 60px;
+        background-color: #3cbc8d;
+        margin: 0;
+        margin-top: 5em;
+        grid-area: 1/2/1/2;
+        height: 550px;
+        width: 100%;
+        margin-bottom: 2em;
+      }
+
+      .WonForm {
         display: grid;
         grid-template: 10px 0.6fr 40px 40px 40px 0.5fr 40px 1fr / 30px 1fr 30px;
       }
 
-      .formH1 {
+      .formWonH1 {
         color: white;
         padding-left: 50px;
         grid-area: 2/2/2/2;
+      }
+
+      .formSignupH1 {
+        color: white;
+        text-align: center;
+        font-size: 2.5em;
+        padding: 0em;
+        margin: 0em;
+        grid-area: 4/4/4/7;
       }
 
       .formName {
@@ -76,6 +100,7 @@
         color: white;
         width: 250px;
         height: 40px;
+
         font-size: 0.8em;
         padding-left: 10px;
         border: 3px solid white;
@@ -84,6 +109,38 @@
       }
 
       input[type="text"]:focus {
+        border: 3px solid rgb(233, 230, 40);
+      }
+
+      input[type="email"] {
+        background-color: transparent;
+        color: white;
+        width: 250px;
+        height: 40px;
+        font-size: 0.8em;
+        padding-left: 10px;
+        border: 3px solid white;
+        box-sizing: border-box;
+        transition: 1s;
+      }
+
+      input[type="email"]:focus {
+        border: 3px solid rgb(233, 230, 40);
+      }
+
+      input[type="password"] {
+        background-color: transparent;
+        color: white;
+        width: 250px;
+        height: 40px;
+        font-size: 0.8em;
+        padding-left: 10px;
+        border: 3px solid white;
+        box-sizing: border-box;
+        transition: 1s;
+      }
+
+      input[type="password"]:focus {
         border: 3px solid rgb(233, 230, 40);
       }
 
@@ -110,8 +167,51 @@
         color: rgb(39, 39, 39);
         transition: 0.3s;
       }
+
       input[type="submit"]:hover {
         box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.75);
+      }
+
+      .formFornavn {
+        grid-area: 6/3/6/4;
+      }
+
+      .formEfternavn {
+        grid-area: 6/6/6/7;
+      }
+
+      .formSignupSubmit {
+        text-align: center;
+        grid-area: 12/4/12/5;
+      }
+
+      .formEmail {
+        grid-area: 8/3/8/4;
+      }
+
+      .formTlfnummer {
+        grid-area: 8/6/8/7;
+      }
+
+      .formPassword {
+        grid-area: 10/3/10/4;
+      }
+
+      .formPasswordCheck {
+        grid-area: 10/6/10/7;
+      }
+
+      .Signup1 {
+        text-align: center;
+        display: grid;
+        grid-template: 20px 40px 10px 40px 30px 40px 40px 40px 40px 40px 80px / 10px 40px 150px 100px 50px 100px 150px 10px 40px;
+      }
+
+      .Signup2 {
+        background-color: rgb(68, 21, 197);
+        text-align: center;
+        display: grid;
+        grid-template: 20px 40px 10px 40px 30px 40px 40px 40px 40px 40px 80px / 10px 40px 150px 100px 50px 100px 150px 10px 40px;
       }
 
       .formContainer {
@@ -122,19 +222,41 @@
         height: 100%;
         grid-template: 1fr/1fr 400px 1fr;
       }
+
+      .formContainerSignup1 {
+        background-color: rgba(0, 0, 0, 0.219);
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template: 1fr/1fr 1fr 1fr;
+      }
+
+      .formContainerSignup2 {
+        background-color: rgba(0, 0, 0, 0.219);
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template: 1fr/1fr 1fr 1fr;
+      }
     </style>
 
     <div class="formContainer">
-      <form name="WonForm" class="wonForm">
-        <h1 class="formH1">
+      <form name="WonForm" class="Form WonForm">
+        <h1 class="formWonH1">
           Tillykke du har vundet <br />
           Bliv nævt på vores Live Feed!
         </h1>
         <label class="formName">
-          <input type="text" name="navn" placeholder="Dit navn" />
+          <input type="text" name="fornavn" placeholder="Dit navn" />
         </label>
         <label class="formLocation">
-          <input type="text" name="lokation" placeholder="Din lokation" />
+          <input
+            type="text"
+            name="bynavn"
+            placeholder='Din lokation f.eks. "København"'
+          />
         </label>
         <label class="formSubmit">
           <input type="submit" value="Submit" name="submit" />
@@ -142,9 +264,85 @@
       </form>
     </div>
 
+    <div class="formContainerSignup1">
+      <form name="Signup1" class="FormSignup Signup1">
+        <h1 class="formSignupH1">
+          Sign Up
+        </h1>
+
+        <label class="formFornavn">
+          <input type="text" name="fornavn" placeholder="Fornavn" />
+        </label>
+
+        <label class="formEfternavn">
+          <input type="text" name="efternavn" placeholder="Efternavn" />
+        </label>
+
+        <label class="formEmail">
+          <input type="email" name="email" placeholder="Email" />
+        </label>
+
+        <label class="formTlfnummer">
+          <input type="text" name="tlfnummer" placeholder="Telefon nummer" />
+        </label>
+
+        <label class="formPassword">
+          <input type="password" name="password" placeholder="password" />
+        </label>
+
+        <label class="formPasswordCheck">
+          <input
+            type="password"
+            name="----"
+            placeholder="gentag dit password"
+          />
+        </label>
+
+        <label class="formSignupSubmit">
+          <input type="submit" value="næste" name="submit" />
+        </label>
+      </form>
+    </div>
+
+    <div class="formContainerSignup2">
+      <form name="Signup2" class="FormSignup Signup2">
+        <h1 class="formSignupH1">
+          Tilmeld dig
+        </h1>
+
+        <label class="formFornavn">
+          <input type="text" name="cpr" placeholder="Cpr nummer" />
+        </label>
+
+        <label class="formEfternavn">
+          <input type="text" name="land" placeholder="Land" />
+        </label>
+
+        <label class="formEmail">
+          <input type="text" name="bynavn" placeholder="By navn" />
+        </label>
+
+        <label class="formTlfnummer">
+          <input type="text" name="vejnavn" placeholder="Vej nummer" />
+        </label>
+
+        <label class="formPassword">
+          <input type="text" name="husnummer" placeholder="Hus nummer" />
+        </label>
+
+        <label class="formPasswordCheck">
+          <input type="text" name="postnummer" placeholder="Post nummer" />
+        </label>
+
+        <label class="formSignupSubmit">
+          <input type="submit" value="Tilmeld" name="submit" />
+        </label>
+      </form>
+    </div>
+
     <div class="content">
       <div class="index">
-        <h1 class="header">Bingo</h1>
+        <h1 class="header">Minibingo</h1>
 
         <div id="liveFeed"></div>
 
@@ -189,8 +387,8 @@
 
       <template id="liveFeedTemp">
         <div class="dataCard">
-          <div class="dataName"></div>
-          <div class="dataEmail"></div>
+          <div class="dataNavn"></div>
+          <div class="dataBynavn"></div>
         </div>
       </template>
     </div>
@@ -199,23 +397,43 @@
       "use srict";
 
       const personDataTemp = {
-        navn: "navn",
-        lokation: "lokation",
+        fornavn: "navn",
+        efternavn: "efternavn",
         email: "email",
-        addresse: "addresse"
+        password: "password",
+        tlfnummer: "tlfnummer",
+
+        cpr: "cpr",
+        bynavn: "lokation",
+        vejnavn: "vejnavn",
+        husnummer: "husnummer",
+        postnummer: "postnummer",
+        land: "land"
       }
 
       let person = Object.create(personDataTemp);
 
       let personData = [];
 
-      const form = document.querySelector(".wonForm")
+      const form = document.querySelector(".WonForm")
+
+      form.querySelector('input[name="fornavn"]').value = ""
+
+      form.querySelector('input[name="bynavn"]').value = ""
+
+      const formSignup1 = document.querySelector(".Signup1")
+
+      const formSignup2 = document.querySelector(".Signup2")
 
       window.addEventListener("DOMContentLoaded", init);
 
       let LiveList;
 
       let modal = document.querySelector(".formContainer");
+
+      let modalSignUp = document.querySelector(".formContainerSignup1");
+
+      let modalSignUp2 = document.querySelector(".formContainerSignup2");
 
       let rollButton = document.querySelector(".startButton");
 
@@ -230,7 +448,7 @@
 
       while(rolls.length<4){
 
-       let = no1 = Math.ceil(Math.random() * 8);
+       let = no1 = Math.ceil(Math.random() * 4);
 
        if(!rolls.includes(no1)){
 
@@ -242,7 +460,7 @@
       }
 
       document.addEventListener("click", function(event){
-        if (event.target.closest(".wonForm")) return;
+        if (event.target.closest(".Form")) return;
 
 
         document.querySelector(".formContainer").style.display = "none";
@@ -320,11 +538,11 @@
       // rest API Live Feed
 
       function get() {
-        fetch("https://music-6420.restdb.io/rest/person-info", {
+        fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
           method: "get",
           headers: {
             "Content-Type": "application/json; charset=utf-8",
-          "x-apikey": "5c7ce843cac6621685acbaaa",
+          "x-apikey": "5cf21329102f585b7c8536c9",
            "cache-control": "no-cache"
            }
           })
@@ -337,32 +555,118 @@
           }
 
       function liveDisplay(person){
-
-            for (let i = 0; i < 10; i++){
+          document.querySelector("#liveFeed").textContent = "";
+        for (let i = 0; i < 10; i++){
                 let nr = person.length - i - 1;
 
                 let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
 
-                  temp.querySelector(".dataName").textContent = person[nr].Name
-                  temp.querySelector(".dataEmail").textContent = person[nr].Email
+                  temp.querySelector(".dataNavn").textContent = person[nr].fornavn
+                  temp.querySelector(".dataBynavn").textContent = person[nr].bynavn
 
                   document.querySelector("#liveFeed").appendChild(temp);
               }
 
             }
 
+      function liveDisplayAdd(person){
+        console.log("something")
+
+
+        let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
+
+        temp.querySelector(".dataNavn").textContent = person.fornavn
+        temp.querySelector(".dataBynavn").textContent = person.bynavn
+
+        document.querySelector("#liveFeed").appendChild(temp);
+
+
+       }
+
       form.addEventListener("submit",e =>{
         e.preventDefault();
 
-        person.navn = form.elements.navn.value
-        person.lokation = form.elements.lokation.value
 
-        personData.push(person);
+        person.fornavn = form.elements.fornavn.value
+        person.bynavn = form.elements.bynavn.value
+
+
 
 
         console.log(personData)
 
+        if (!form.elements.fornavn.value == "" && !form.elements.bynavn.value == ""){
+          personData.push(person);
+          modal.style.display = "none"
+          console.log(person)
+          post(personData,"minibingovindere")
 
+          modalSignUp.style.display = "grid";
+          formSignup1.querySelector('input[name="fornavn"]').value = person.fornavn;
+
+        }
+
+
+      })
+
+      function post(NewPerson,link) {
+        fetch(`https://rockstardata-e28c.restdb.io/rest/${link}`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "x-apikey": "5cf21329102f585b7c8536c9",
+            "cache-control": "no-cache"
+          },
+          body: JSON.stringify(NewPerson)
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log("hello");
+            if (data.status) {
+              console.log("ERROR");
+            } else {
+              get();
+            }
+          });
+      }
+
+      // signup forms
+
+      formSignup1.addEventListener("submit",e=> {
+        e.preventDefault();
+
+        person.fornavn = formSignup1.elements.fornavn.value
+        person.efternavn = formSignup1.elements.efternavn.value
+        person.email = formSignup1.elements.email.value
+        person.tlfnummer = formSignup1.elements.tlfnummer.value
+        person.password = formSignup1.elements.password.value
+
+        modalSignUp.style.display = "none";
+        modalSignUp2.style.display = "grid";
+        formSignup2.querySelector('input[name="bynavn"]').value = person.bynavn;
+
+        console.log(person)
+      });
+
+      formSignup2.addEventListener("submit",e=> {
+        e.preventDefault();
+
+        person.cpr = formSignup2.elements.cpr.value
+        person.land = formSignup2.elements.land.value
+        person.bynavn = formSignup2.elements.bynavn.value
+        person.vejnavn = formSignup2.elements.vejnavn.value
+        person.husnummer = formSignup2.elements.husnummer.value
+        person.postnummer = formSignup2.elements.postnummer.value
+
+        personData = []
+
+        personData.push(person);
+
+        post(personData,"danskespil")
+
+        console.log(personData);
+
+        modalSignUp2.style.display = "none"
 
       })
     </script>
