@@ -23,11 +23,6 @@
         height: 100%;
       }
 
-      #liveFeed {
-        background-color: red;
-        grid-area: 4/2/7/4;
-      }
-
       .bingoSpil {
         background-color: blue;
 
@@ -59,8 +54,8 @@
       }
 
       .FormSignup {
-        border-radius: 60px;
-        background-color: #3cbc8d;
+        border-radius: 10px;
+        background-color: #a0d323;
         margin: 0;
         margin-top: 5em;
         grid-area: 1/2/1/2;
@@ -240,6 +235,54 @@
         height: 100%;
         grid-template: 1fr/1fr 1fr 1fr;
       }
+
+      #liveFeed {
+        background-color: white;
+        grid-area: 4/2/7/4;
+
+        display: grid;
+        grid-template: 50px 1fr/1fr;
+      }
+
+      .liveHeader {
+        color: white;
+
+        text-align: center;
+
+        background-color: #a0d323;
+        grid-area: 1/1/1/1;
+      }
+
+      .liveHeader h1 {
+        padding-top: 7px;
+        margin: 0;
+      }
+
+      .liveContainer {
+        grid-area: 2/1/2/1;
+      }
+
+      .dataCard {
+        background-color: rgba(255, 196, 37, 1);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+        display: grid;
+        grid-template: 10px 1fr 10px/ 10px 1fr 2fr 10px;
+        height: 40px;
+        width: 96%;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 15px;
+        margin-bottom: 10px;
+      }
+
+      .dataNavn {
+        grid-area: 2/2/2/2;
+      }
+
+      .dataBynavn {
+        grid-area: 2/3/2/3;
+      }
     </style>
 
     <div class="formContainer">
@@ -344,7 +387,12 @@
       <div class="index">
         <h1 class="header">Minibingo</h1>
 
-        <div id="liveFeed"></div>
+        <div id="liveFeed">
+          <div class="liveHeader">
+            <h1>Header</h1>
+          </div>
+          <div class="liveContainer">Test</div>
+        </div>
 
         <div class="bingoSpil">
           <div class="testBg bingoRolls">
@@ -434,6 +482,8 @@
       let modalSignUp = document.querySelector(".formContainerSignup1");
 
       let modalSignUp2 = document.querySelector(".formContainerSignup2");
+
+      let tilmeldKnap = document.querySelector(".tilmeld")
 
       let rollButton = document.querySelector(".startButton");
 
@@ -537,6 +587,8 @@
 
       // rest API Live Feed
 
+
+
       function get() {
         fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
           method: "get",
@@ -555,16 +607,16 @@
           }
 
       function liveDisplay(person){
-          document.querySelector("#liveFeed").textContent = "";
+          document.querySelector(".liveContainer").textContent = "";
         for (let i = 0; i < 10; i++){
                 let nr = person.length - i - 1;
 
                 let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
 
-                  temp.querySelector(".dataNavn").textContent = person[nr].fornavn
-                  temp.querySelector(".dataBynavn").textContent = person[nr].bynavn
+                  temp.querySelector(".dataNavn").textContent = `${person[nr].fornavn}`
+                  temp.querySelector(".dataBynavn").textContent = `Fra ${person[nr].bynavn}`
 
-                  document.querySelector("#liveFeed").appendChild(temp);
+                  document.querySelector(".liveContainer").appendChild(temp);
               }
 
             }
@@ -578,7 +630,7 @@
         temp.querySelector(".dataNavn").textContent = person.fornavn
         temp.querySelector(".dataBynavn").textContent = person.bynavn
 
-        document.querySelector("#liveFeed").appendChild(temp);
+        document.querySelector(".liveContainer").appendChild(temp);
 
 
        }
@@ -589,7 +641,6 @@
 
         person.fornavn = form.elements.fornavn.value
         person.bynavn = form.elements.bynavn.value
-
 
 
 
@@ -631,6 +682,12 @@
       }
 
       // signup forms
+
+      tilmeldKnap.addEventListener("click",()=>{
+
+        modalSignUp.style.display = "grid";
+      })
+
 
       formSignup1.addEventListener("submit",e=> {
         e.preventDefault();
