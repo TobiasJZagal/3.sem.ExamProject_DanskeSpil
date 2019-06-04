@@ -477,19 +477,11 @@
           />
 
           <div class=" bingoRolls">
-            <p class="no1">
-              -
-            </p>
+            <p class="no1"></p>
 
-            <p class="no2">
-              -
-            </p>
-            <p class="no3">
-              -
-            </p>
-            <p class="no4">
-              -
-            </p>
+            <p class="no2"></p>
+            <p class="no3"></p>
+            <p class="no4"></p>
           </div>
 
           <button class="startButton">Roll</button>
@@ -524,314 +516,314 @@
     </div>
 
     <script>
-             "use srict";
+       "use srict";
 
 
-             const personDataTemp = {
-               fornavn: "navn",
-               efternavn: "efternavn",
-               email: "email",
-               password: "password",
-               tlfnummer: "tlfnummer",
+       const personDataTemp = {
+         fornavn: "navn",
+         efternavn: "efternavn",
+         email: "email",
+         password: "password",
+         tlfnummer: "tlfnummer",
 
-               cpr: "cpr",
-               bynavn: "lokation",
-               vejnavn: "vejnavn",
-               husnummer: "husnummer",
-               postnummer: "postnummer",
-               land: "land"
-             }
+         cpr: "cpr",
+         bynavn: "lokation",
+         vejnavn: "vejnavn",
+         husnummer: "husnummer",
+         postnummer: "postnummer",
+         land: "land"
+       }
 
-             let speakText;
+       let speakText;
 
-             let person = Object.create(personDataTemp);
+       let person = Object.create(personDataTemp);
 
-             let personData = [];
+       let personData = [];
 
-             const form = document.querySelector(".WonForm")
+       const form = document.querySelector(".WonForm")
 
-             form.querySelector('input[name="fornavn"]').value = ""
+       form.querySelector('input[name="fornavn"]').value = ""
 
-             form.querySelector('input[name="bynavn"]').value = ""
+       form.querySelector('input[name="bynavn"]').value = ""
 
-             const formSignup1 = document.querySelector(".Signup1")
+       const formSignup1 = document.querySelector(".Signup1")
 
-             const formSignup2 = document.querySelector(".Signup2")
+       const formSignup2 = document.querySelector(".Signup2")
 
-             window.addEventListener("DOMContentLoaded", init);
+       window.addEventListener("DOMContentLoaded", init);
 
-             let LiveList;
+       let LiveList;
 
-             let modal = document.querySelector(".formContainer");
+       let modal = document.querySelector(".formContainer");
 
-             let modalSignUp = document.querySelector(".formContainerSignup1");
+       let modalSignUp = document.querySelector(".formContainerSignup1");
 
-             let modalSignUp2 = document.querySelector(".formContainerSignup2");
+       let modalSignUp2 = document.querySelector(".formContainerSignup2");
 
-             let tilmeldKnap = document.querySelector(".tilmeld")
+       let tilmeldKnap = document.querySelector(".tilmeld")
 
-             let rollButton = document.querySelector(".startButton");
+       let rollButton = document.querySelector(".startButton");
 
-             function init() {
+       function init() {
 
-               get();
-                }
+         get();
+          }
 
-             function rollDice(){
+       function rollDice(){
 
-             let rolls = [];
+       let rolls = [];
 
-             while(rolls.length<4){
+       while(rolls.length<4){
 
-              let = no1 = Math.ceil(Math.random() * 8);
+        let = no1 = Math.ceil(Math.random() * 8);
 
-              if(!rolls.includes(no1)){
+        if(!rolls.includes(no1)){
 
-               rolls.push(no1)
-               }
+         rolls.push(no1)
+         }
 
-               }
-             return rolls;
-             }
+         }
+       return rolls;
+       }
 
-             document.addEventListener("click", function(event){
-               if (event.target.closest(".Form")) return;
+       document.addEventListener("click", function(event){
+         if (event.target.closest(".Form")) return;
 
 
-               document.querySelector(".formContainer").style.display = "none";
-               console.log("hello")
-             })
+         document.querySelector(".formContainer").style.display = "none";
+         console.log("hello")
+       })
 
-             document.querySelector(".content").addEventListener("click",()=>{
-              document.querySelector(".formContainer").style.display = "none";
-             })
+       document.querySelector(".content").addEventListener("click",()=>{
+        document.querySelector(".formContainer").style.display = "none";
+       })
 
-             rollButton.addEventListener("click", () => {
-               document.querySelector(".formContainer").style.display = "grid";
+       rollButton.addEventListener("click", () => {
+         document.querySelector(".formContainer").style.display = "grid";
 
-               let bingoRolls = rollDice();
-               let myRolls = rollDice()
+         let bingoRolls = rollDice();
+         let myRolls = rollDice()
 
-               const t = document.querySelectorAll(".bingoRolls p")
+         const t = document.querySelectorAll(".bingoRolls p")
 
-               const t2 = document.querySelectorAll(".myRolls p")
-               let i = 0;
-               let win = 0;
+         const t2 = document.querySelectorAll(".myRolls p")
+         let i = 0;
+         let win = 0;
 
-              // speak(`The first number is coming up and it is`)
+        speak(`The first number is coming up`)
 
-               t2.forEach((element, index)=>{
+         t2.forEach((element, index)=>{
 
-               element.textContent = "-"
-                  element.style.backgroundColor = ""
+         element.textContent = "-"
+            element.style.backgroundColor = ""
 
-               })
+         })
 
-               t.forEach((element, index)=>{
+         t.forEach((element, index)=>{
 
-                 element.textContent = "-"
-                 element.style.backgroundColor = ""
+           element.textContent = ""
+           element.style.backgroundColor = ""
 
-               })
+         })
 
-               function myLoop () {
-                setTimeout(function () {
+         function myLoop () {
+          setTimeout(function () {
 
-                t[i].textContent=bingoRolls[i]
+          t[i].textContent=bingoRolls[i]
 
-      /*
-                if (i == 0){
-                  speak(`number ${bingoRolls[i]}`)
-                } else if (i == 1){
-                  speak(`then we have number ${bingoRolls[i]}`)
-                } else if (i == 2){
-                  speak(`and number ${bingoRolls[i]}`)
-                } else {
-                  speak(`and the last number is number ${bingoRolls[i]}`)
-                }
 
-      */
-                 if (myRolls.includes(Number(t[i].textContent))){
-                   t[i].style.backgroundColor = "green";
-                   win += 1;
-                   console.log(win)};
+          if (i == 0){
+            speak(`and the first number is ${bingoRolls[i]}`)
+          } else if (i == 1){
+            speak(`then we have ${bingoRolls[i]}`)
+          } else if (i == 2){
+            speak(`and then ${bingoRolls[i]}`)
+          } else {
+            speak(`and the last number is ${bingoRolls[i]}`)
+          }
 
-                 if (i == 3){
-                   t2.forEach((element,index)=>{
-                    if (bingoRolls.includes(myRolls[index])){
-                        element.style.backgroundColor = "green"}});
 
-                   if (win == 4){
-                     winning();
-                     console.log("win")}};
-                i++;
+           if (myRolls.includes(Number(t[i].textContent))){
+             t[i].style.backgroundColor = "green";
+             win += 1;
+             console.log(win)};
 
-                if (i < t.length) {
-                  myLoop();
+           if (i == 3){
+             t2.forEach((element,index)=>{
+              if (bingoRolls.includes(myRolls[index])){
+                  element.style.backgroundColor = "green"}});
 
-                }
-                }, 1000)};
+             if (win == 4){
+               winning();
+               console.log("win")}};
+          i++;
 
-               myLoop();
+          if (i < t.length) {
+            myLoop();
 
-               t2.forEach((element, index)=>{
-                element.textContent=myRolls[index]
-               })
+          }
+          }, 5000)};
 
-             });
+         myLoop();
 
-             function winning(){
-               modal.style.display = "grid";
-             }
+         t2.forEach((element, index)=>{
+          element.textContent=myRolls[index]
+         })
 
-             // rest API Live Feed
+       });
 
+       function winning(){
+         modal.style.display = "grid";
+       }
 
+       // rest API Live Feed
 
-             function get() {
-               fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
-                 method: "get",
-                 headers: {
-                   "Content-Type": "application/json; charset=utf-8",
-                 "x-apikey": "5cf21329102f585b7c8536c9",
-                  "cache-control": "no-cache"
-                  }
-                 })
-                     .then(res => res.json())
-                     .then(json => {
-                       LiveList = json;
-                       console.table(json);
-                       liveDisplay(json);
-                     });
-                 }
 
-             function liveDisplay(person){
-                 document.querySelector(".liveContainer").textContent = "";
-               for (let i = 0; i < 10; i++){
-                       let nr = person.length - i - 1;
 
-                       let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
-
-                         temp.querySelector(".dataNavn").textContent = `${person[nr].fornavn}`
-                         temp.querySelector(".dataBynavn").textContent = `Fra ${person[nr].bynavn}`
-
-                         document.querySelector(".liveContainer").appendChild(temp);
-                     }
-
-                   }
-
-             function liveDisplayAdd(person){
-               console.log("something")
-
-
-               let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
-
-               temp.querySelector(".dataNavn").textContent = person.fornavn
-               temp.querySelector(".dataBynavn").textContent = person.bynavn
-
-               document.querySelector(".liveContainer").appendChild(temp);
-
-
-              }
-
-             form.addEventListener("submit",e =>{
-               e.preventDefault();
-
-
-               person.fornavn = form.elements.fornavn.value
-               person.bynavn = form.elements.bynavn.value
-
-
-
-               console.log(personData)
-
-               if (!form.elements.fornavn.value == "" && !form.elements.bynavn.value == ""){
-                 personData.push(person);
-                 modal.style.display = "none"
-                 console.log(person)
-                 post(personData,"minibingovindere")
-
-                 modalSignUp.style.display = "grid";
-                 formSignup1.querySelector('input[name="fornavn"]').value = person.fornavn;
-
-               }
-
-
-             })
-
-             function post(NewPerson,link) {
-               fetch(`https://rockstardata-e28c.restdb.io/rest/${link}`, {
-                 method: "post",
-                 headers: {
-                   "Content-Type": "application/json; charset=utf-8",
-                   "x-apikey": "5cf21329102f585b7c8536c9",
-                   "cache-control": "no-cache"
-                 },
-                 body: JSON.stringify(NewPerson)
-               })
-                 .then(res => res.json())
-                 .then(data => {
-                   console.log("hello");
-                   if (data.status) {
-                     console.log("ERROR");
-                   } else {
-                     get();
-                   }
-                 });
-             }
-
-             // signup forms
-
-             tilmeldKnap.addEventListener("click",()=>{
-
-               modalSignUp.style.display = "grid";
-             })
-
-
-             formSignup1.addEventListener("submit",e=> {
-               e.preventDefault();
-
-               person.fornavn = formSignup1.elements.fornavn.value
-               person.efternavn = formSignup1.elements.efternavn.value
-               person.email = formSignup1.elements.email.value
-               person.tlfnummer = formSignup1.elements.tlfnummer.value
-               person.password = formSignup1.elements.password.value
-
-               modalSignUp.style.display = "none";
-               modalSignUp2.style.display = "grid";
-               formSignup2.querySelector('input[name="bynavn"]').value = person.bynavn;
-
-               console.log(person)
-             });
-
-             formSignup2.addEventListener("submit",e=> {
-               e.preventDefault();
-
-               person.cpr = formSignup2.elements.cpr.value
-               person.land = formSignup2.elements.land.value
-               person.bynavn = formSignup2.elements.bynavn.value
-               person.vejnavn = formSignup2.elements.vejnavn.value
-               person.husnummer = formSignup2.elements.husnummer.value
-               person.postnummer = formSignup2.elements.postnummer.value
-
-               personData = []
-
-               personData.push(person);
-
-               post(personData,"danskespil")
-
-               console.log(personData);
-
-               modalSignUp2.style.display = "none"
-
-            })
-
-
-            // text to speach
-
-            function speak(word){
-             window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+       function get() {
+         fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
+           method: "get",
+           headers: {
+             "Content-Type": "application/json; charset=utf-8",
+           "x-apikey": "5cf21329102f585b7c8536c9",
+            "cache-control": "no-cache"
             }
+           })
+               .then(res => res.json())
+               .then(json => {
+                 LiveList = json;
+                 console.table(json);
+                 liveDisplay(json);
+               });
+           }
+
+       function liveDisplay(person){
+           document.querySelector(".liveContainer").textContent = "";
+         for (let i = 0; i < 10; i++){
+                 let nr = person.length - i - 1;
+
+                 let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
+
+                   temp.querySelector(".dataNavn").textContent = `${person[nr].fornavn}`
+                   temp.querySelector(".dataBynavn").textContent = `Fra ${person[nr].bynavn}`
+
+                   document.querySelector(".liveContainer").appendChild(temp);
+               }
+
+             }
+
+       function liveDisplayAdd(person){
+         console.log("something")
+
+
+         let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
+
+         temp.querySelector(".dataNavn").textContent = person.fornavn
+         temp.querySelector(".dataBynavn").textContent = person.bynavn
+
+         document.querySelector(".liveContainer").appendChild(temp);
+
+
+        }
+
+       form.addEventListener("submit",e =>{
+         e.preventDefault();
+
+
+         person.fornavn = form.elements.fornavn.value
+         person.bynavn = form.elements.bynavn.value
+
+
+
+         console.log(personData)
+
+         if (!form.elements.fornavn.value == "" && !form.elements.bynavn.value == ""){
+           personData.push(person);
+           modal.style.display = "none"
+           console.log(person)
+           post(personData,"minibingovindere")
+
+           modalSignUp.style.display = "grid";
+           formSignup1.querySelector('input[name="fornavn"]').value = person.fornavn;
+
+         }
+
+
+       })
+
+       function post(NewPerson,link) {
+         fetch(`https://rockstardata-e28c.restdb.io/rest/${link}`, {
+           method: "post",
+           headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "x-apikey": "5cf21329102f585b7c8536c9",
+             "cache-control": "no-cache"
+           },
+           body: JSON.stringify(NewPerson)
+         })
+           .then(res => res.json())
+           .then(data => {
+             console.log("hello");
+             if (data.status) {
+               console.log("ERROR");
+             } else {
+               get();
+             }
+           });
+       }
+
+       // signup forms
+
+       tilmeldKnap.addEventListener("click",()=>{
+
+         modalSignUp.style.display = "grid";
+       })
+
+
+       formSignup1.addEventListener("submit",e=> {
+         e.preventDefault();
+
+         person.fornavn = formSignup1.elements.fornavn.value
+         person.efternavn = formSignup1.elements.efternavn.value
+         person.email = formSignup1.elements.email.value
+         person.tlfnummer = formSignup1.elements.tlfnummer.value
+         person.password = formSignup1.elements.password.value
+
+         modalSignUp.style.display = "none";
+         modalSignUp2.style.display = "grid";
+         formSignup2.querySelector('input[name="bynavn"]').value = person.bynavn;
+
+         console.log(person)
+       });
+
+       formSignup2.addEventListener("submit",e=> {
+         e.preventDefault();
+
+         person.cpr = formSignup2.elements.cpr.value
+         person.land = formSignup2.elements.land.value
+         person.bynavn = formSignup2.elements.bynavn.value
+         person.vejnavn = formSignup2.elements.vejnavn.value
+         person.husnummer = formSignup2.elements.husnummer.value
+         person.postnummer = formSignup2.elements.postnummer.value
+
+         personData = []
+
+         personData.push(person);
+
+         post(personData,"danskespil")
+
+         console.log(personData);
+
+         modalSignUp2.style.display = "none"
+
+      })
+
+
+      // text to speach
+
+      function speak(word){
+       window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
+      }
     </script>
   </body>
 </html>
