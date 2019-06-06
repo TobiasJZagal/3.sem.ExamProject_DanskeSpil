@@ -4,183 +4,1117 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Serif+Caption&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
     <style>
-      .container {
-        display: grid;
-        max-width: 1000px;
-        grid-gap: 1em;
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-      .content {
-        display: grid;
-        grid-template: 1fr 1fr 1fr 20px/1fr 1fr 1fr;
-        height: 300px;
-        width: 300px;
-
-        padding: 1em;
-        background-color: rgb(238, 238, 108);
-      }
-      .name {
-        grid-area: 1/1/1/4;
-      }
-      .email {
-        grid-area: 2/1/4/4;
-      }
-      .deleteButton {
-        grid-area: 4/2/4/4;
+      body {
+        margin: 0;
+        background-image: url("svg/danskespilBg.svg");
+        background-size: 300px;
+        font-family: "PT Serif Caption", serif;
       }
 
-      .artist {
-        background-color: rgb(238, 238, 108);
-        height: 150px;
-        width: 300px;
+      .index {
+        display: grid;
+        grid-template: 30px 60px 30px 600px 20px 60px 60px 50px /80px 200px 50px 30px 220px 100px 220px 1fr 130px;
+        height: 100%;
+      }
+
+      .header {
+        border-radius: 5px;
+        margin: 0;
+        grid-area: 2/5/2/9;
+        background-color: #607f15;
+        display: grid;
+        grid-template-columns: 100px 1fr 100px;
+      }
+
+      .bingoLogo {
+        height: 60%;
+        padding-top: 15px;
+        padding-left: 15px;
+        grid-area: 1/1/1/1;
+      }
+
+      .danskespilLogo {
+        padding-top: 12px;
+        padding-left: 12px;
+        height: 60%;
+        width: 100%;
+
+        grid-area: 1/3/1/3;
+      }
+
+      .tilmeld {
+        grid-area: 6/5/6/5;
+      }
+
+      .goTo {
+        grid-area: 6/7/6/7;
+      }
+
+      .Form {
+        background-color: #3cbc8d;
+        margin: 0;
+        margin-top: 5em;
+        grid-area: 1/2/1/2;
+        height: 550px;
+        width: 400px;
         margin-bottom: 2em;
+      }
+
+      .FormSignup {
+        border-radius: 10px;
+        background-color: #a0d323;
+        margin: 0;
+        margin-top: 5em;
+        grid-area: 1/2/1/2;
+        height: 550px;
+        width: 650px;
+        margin-bottom: 2em;
+      }
+
+      .WonForm {
         display: grid;
-        grid-template: 1fr 1fr 1fr/1fr 1fr;
+        grid-template: 10px 0.6fr 40px 40px 40px 0.5fr 40px 1fr / 30px 1fr 30px;
       }
 
-      .formDescription {
-        grid-area: 3/1/3/1;
+      .formWonH1 {
+        color: white;
+        padding-left: 50px;
+        grid-area: 2/2/2/2;
       }
 
-      .formTask {
+      .formSignupH1 {
+        color: white;
+        text-align: center;
+        font-size: 2.5em;
+        padding: 0em;
+        margin: 0em;
+        grid-area: 4/4/4/7;
+      }
+
+      .formName {
+        text-align: center;
+
+        grid-area: 4/2/4/2;
+      }
+
+      input[type="text"] {
+        background-color: transparent;
+        color: white;
+        width: 250px;
+        height: 40px;
+
+        font-size: 0.8em;
+        padding-left: 10px;
+        border: 3px solid white;
+        box-sizing: border-box;
+        transition: 1s;
+      }
+
+      input[type="text"]:focus {
+        border: 3px solid rgb(233, 230, 40);
+      }
+
+      input[type="email"] {
+        background-color: transparent;
+        color: white;
+        width: 250px;
+        height: 40px;
+        font-size: 0.8em;
+        padding-left: 10px;
+        border: 3px solid white;
+        box-sizing: border-box;
+        transition: 1s;
+      }
+
+      input[type="email"]:focus {
+        border: 3px solid rgb(233, 230, 40);
+      }
+
+      input[type="password"] {
+        background-color: transparent;
+        color: white;
+        width: 250px;
+        height: 40px;
+        font-size: 0.8em;
+        padding-left: 10px;
+        border: 3px solid white;
+        box-sizing: border-box;
+        transition: 1s;
+      }
+
+      input[type="password"]:focus {
+        border: 3px solid rgb(233, 230, 40);
+      }
+
+      .formLocation {
+        text-align: center;
+        grid-area: 6/2/6/2;
+      }
+
+      .formSubmit {
+        text-align: center;
+
+        grid-area: 8/2/8/2;
+      }
+
+      input[type="submit"] {
+        background-color: white;
+        border: none;
+        text-decoration: none;
+        width: 250px;
+        height: 60px;
+        border-radius: 40px;
+        font-size: 1.2em;
+        font-weight: 400;
+        color: rgb(39, 39, 39);
+        transition: 0.3s;
+        opacity: 0.5;
+      }
+
+      input[type="submit"]:hover {
+        box-shadow: 0px 0px 14px -3px rgba(0, 0, 0, 0.75);
+      }
+
+      .formFornavn {
+        grid-area: 7/3/7/4;
+      }
+
+      .fornavn {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 6/3/6/5;
+      }
+
+      .formEfternavn {
+        grid-area: 7/6/7/7;
+      }
+
+      .efternavn {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 6/6/6/7;
+      }
+
+      .formSignupSubmit {
+        text-align: center;
+        grid-area: 14/4/14/5;
+      }
+
+      .formEmail {
+        grid-area: 9/3/9/4;
+      }
+
+      .email {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 8/3/8/4;
+      }
+
+      .formTlfnummer {
+        grid-area: 9/6/9/7;
+      }
+
+      .tlfnummer {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 8/6/8/8;
+      }
+
+      .formPassword {
+        grid-area: 12/3/12/4;
+      }
+
+      .password {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 11/3/11/4;
+      }
+
+      .formPasswordCheck {
+        grid-area: 12/6/12/7;
+      }
+
+      .repassword {
+        padding: 0;
+        margin: 0;
+        color: white;
+        text-align: left;
+        grid-area: 11/6/11/8;
+      }
+
+      .errormessage {
+        padding: 0;
+        margin: 0;
+        color: red;
+        text-align: left;
+        grid-area: 10/3/10/5;
+      }
+
+      .Signup1 {
+        font-size: 0.8em;
+        text-align: center;
+        display: grid;
+
+        grid-template: 20px 50px 10px 50px 20px 30px 60px 30px 40px 20px 30px 30px 40px 80px / 10px 40px 150px 100px 50px 100px 150px 10px 40px;
+      }
+
+      .Signup2 {
+        font-size: 0.8em;
+        background-color: #a0d323;
+        text-align: center;
+        display: grid;
+        grid-template: 20px 50px 10px 50px 20px 30px 60px 30px 40px 20px 30px 30px 40px 80px / 10px 40px 150px 100px 50px 100px 150px 10px 40px;
+      }
+
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="text"] {
+        font-size: 1em;
+      }
+
+      .formContainer {
+        background-color: rgba(0, 0, 0, 0.219);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template: 1fr/1fr 400px 1fr;
+      }
+
+      .formContainerSignup1 {
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template: 1fr/1fr 1fr 1fr;
+      }
+
+      .formContainerSignup2 {
+        background-color: rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: 100%;
+        grid-template: 1fr/1fr 1fr 1fr;
+      }
+
+      #liveFeed {
+        background-color: white;
+        grid-area: 4/2/7/4;
+        border-radius: 5px;
+
+        display: grid;
+        grid-template: 50px 1fr/1fr;
+      }
+
+      .liveHeader {
+        color: white;
+
+        text-align: center;
+        border-radius: 5px 5px 0px 0px;
+        background-color: #a0d323;
+        grid-area: 1/1/1/1;
+      }
+
+      .liveHeader h1 {
+        padding-top: 7px;
+        margin: 0;
+      }
+
+      .liveContainer {
         grid-area: 2/1/2/1;
       }
 
-      .formH1 {
-        grid-area: 1/1/1/3;
+      .dataCard {
+        background-color: rgba(255, 196, 37, 1);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+        display: grid;
+        grid-template: 10px 1fr 10px/ 10px 1fr 2fr 10px;
+        height: 40px;
+        width: 96%;
+        margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 15px;
+        margin-bottom: 10px;
       }
 
-      .formSumit {
-        grid-area: 3/2/3/2;
+      .dataNavn {
+        grid-area: 2/2/2/2;
+      }
+
+      .dataBynavn {
+        grid-area: 2/3/2/3;
+      }
+
+      .bingoSpil {
+        background-color: #a0d323;
+        /* background-image: url("svg/danskespilBg4.svg");
+        */
+        background-size: 400px;
+        grid-area: 4/5/4/9;
+        border-radius: 5px;
+        display: grid;
+        grid-template: 100px 100px 100px 1fr 70px 70px 70px 1fr/100px 100px 100px 100px 100px 1fr 100px 120px 100px 100px 1fr;
+      }
+
+      .bingoRolls {
+        grid-area: 2/2/2/6;
+        margin: 0;
+        padding: 0;
+
+        font-size: 2em;
+        text-align: center;
+        background-color: rgba(255, 196, 37, 1);
+
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        background-image: url("svg/danskespilBg4.svg");
+        background-size: 200px;
+      }
+
+      .bingoRolls p {
+        padding: 0;
+        margin: 0;
+        padding-top: 28px;
+        background-image: url("svg/ballnew.svg");
+        background-size: 80px;
+        background-position: center;
+        background-repeat: no-repeat, repeat;
+      }
+
+      .myRolls {
+        grid-area: 5/2/8/5;
+        background-color: rgb(247, 217, 184);
+        border: 3px #ee9e36 solid;
+        display: grid;
+        grid-template: 1fr 1fr 1fr/ 1fr 1fr 1fr;
+        text-align: center;
+      }
+
+      .myRolls p {
+        font-size: 1.4em;
+        border: 3px #ee9e36 solid;
+        padding-top: 20px;
+        margin: 0;
+      }
+
+      .no6 {
+        grid-area: 2/2/2/2;
+      }
+
+      .no7 {
+        grid-area: 3/1/3/1;
+      }
+
+      .no8 {
+        grid-area: 3/3/3/3;
+      }
+
+      .startButton {
+        background-color: rgba(255, 196, 37, 1);
+
+        border: none;
+        text-decoration: none;
+        width: 150px;
+        height: 60px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: 400;
+        color: rgb(39, 39, 39);
+
+        transition: 0.3s;
+        grid-area: 6/6/6/7;
+      }
+
+      .table {
+        background-color: rgb(94, 80, 51);
+        grid-area: 4/1/11/13;
+      }
+
+      .bingoWheel {
+        height: 150%;
+        grid-area: 2/9/4/10;
+      }
+
+      .roll1 {
+        padding-left: 50px;
+        font-size: 90px;
+        text-align: center;
+
+        transform: translateX(110px) translateY(100px);
+      }
+
+      .tilmeld {
+        background-color: #a0d323;
+
+        border: none;
+        text-decoration: none;
+        width: 200px;
+        height: 60px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: 400;
+        color: rgb(39, 39, 39);
+
+        transition: 0.3s;
+      }
+
+      .tilmeld:hover {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        color: rgb(78, 36, 231);
+      }
+
+      .goTo {
+        background-color: #a0d323;
+
+        border: none;
+        text-decoration: none;
+        width: 200px;
+        height: 60px;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: 400;
+        color: rgb(39, 39, 39);
+        text-decoration: none;
+        transition: 0.3s;
+        text-align: center;
+      }
+
+      .goTo a {
+        text-decoration: none;
+        color: rgb(39, 39, 39);
+      }
+
+      .goTo a:hover {
+        text-decoration: none;
+        color: rgb(78, 36, 231);
+      }
+
+      .goTo:hover {
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+        color: rgb(78, 36, 231);
       }
     </style>
-    <form name="artist" class="artist">
-      <h1 class="formH1">Create new task</h1>
-      <label class="formTask">
-        <input type="text" name="name" placeholder="Task name" />
-      </label>
-      <label class="formDescription">
-        <input type="email" name="email" placeholder="Task description" />
-      </label>
-      <label class="formSumit">
-        <input type="submit" value="Submit" name="submit" />
-      </label>
-    </form>
-    <div class="container"></div>
 
-    <template id="temp">
-      <div class="content">
-        <h2 class="name"></h2>
-        <p class="email"></p>
-        <button class="deleteButton">Task Done</button>
+    <div class="formContainer">
+      <form name="WonForm" class="Form WonForm">
+        <h1 class="formWonH1">
+          Tillykke du har vundet <br />
+          Bliv nævt på vores Live Feed!
+        </h1>
+        <label class="formName">
+          <input type="text" name="fornavn" placeholder="Dit navn" />
+        </label>
+        <label class="formLocation">
+          <input
+            type="text"
+            name="bynavn"
+            placeholder='Din lokation f.eks. "København"'
+          />
+        </label>
+        <label class="formSubmit">
+          <input type="submit" value="Submit" name="submit" />
+        </label>
+      </form>
+    </div>
+
+    <div class="formContainerSignup1">
+      <form name="Signup1" class="FormSignup Signup1">
+        <h1 class="formSignupH1">
+          Sign Up
+        </h1>
+        <h2 class="fornavn">Fornavn</h2>
+        <label class="formFornavn">
+          <input type="text" name="fornavn" placeholder="Fornavn" />
+        </label>
+        <h2 class="efternavn">Efternavn</h2>
+        <label class="formEfternavn">
+          <input type="text" name="efternavn" placeholder="Efternavn" />
+        </label>
+
+        <p class="errormessage"></p>
+        <h2 class="email">Email</h2>
+        <label class="formEmail">
+          <input type="email" name="email" placeholder="Email" />
+        </label>
+
+        <h2 class="tlfnummer">Tlf. Nummer</h2>
+        <label class="formTlfnummer">
+          <input type="text" name="tlfnummer" placeholder="Telefon nummer" />
+        </label>
+
+        <h2 class="password">Password</h2>
+        <label class="formPassword">
+          <input type="password" name="password" placeholder="password" />
+        </label>
+
+        <h2 class="repassword">Gentag password</h2>
+        <label class="formPasswordCheck">
+          <input
+            type="password"
+            name="----"
+            placeholder="gentag dit password"
+          />
+        </label>
+
+        <label class="formSignupSubmit">
+          <input type="submit" value="næste" name="submit" />
+        </label>
+      </form>
+    </div>
+
+    <div class="formContainerSignup2">
+      <form name="Signup2" class="FormSignup Signup2">
+        <h1 class="formSignupH1">
+          Tilmeld dig
+        </h1>
+
+        <h2 class="fornavn">Cpr nummer</h2>
+        <label class="formFornavn">
+          <input type="text" name="cpr" placeholder="Cpr nummer" />
+        </label>
+
+        <h2 class="efternavn">Land</h2>
+        <label class="formEfternavn">
+          <input type="text" name="land" placeholder="Land" />
+        </label>
+
+        <h2 class="email">Bynavn</h2>
+        <label class="formEmail">
+          <input type="text" name="bynavn" placeholder="By navn" />
+        </label>
+
+        <h2 class="tlfnummer">Vej navn</h2>
+        <label class="formTlfnummer">
+          <input type="text" name="vejnavn" placeholder="Vej navn" />
+        </label>
+
+        <h2 class="password">Hus nummer</h2>
+        <label class="formPassword">
+          <input type="text" name="husnummer" placeholder="Hus nummer" />
+        </label>
+
+        <h2 class="repassword">Postnummer</h2>
+        <label class="formPasswordCheck">
+          <input type="text" name="postnummer" placeholder="Post nummer" />
+        </label>
+
+        <label class="formSignupSubmit">
+          <input type="submit" value="Tilmeld" name="submit" />
+        </label>
+      </form>
+    </div>
+
+    <div class="content">
+      <div class="index">
+        <h1 class="header">
+          <img class="bingoLogo" src="svg/bingoLogo.svg" alt="Bingo Logo" />
+          <img
+            class="danskespilLogo"
+            src="svg/danskespilLogo.svg"
+            alt="Dasnkespil Logo"
+          />
+        </h1>
+
+        <div id="liveFeed">
+          <div class="liveHeader">
+            <h1>Live vindere</h1>
+          </div>
+          <div class="liveContainer">Loading...</div>
+        </div>
+
+        <div class="bingoSpil">
+          <div class="table"></div>
+          <img
+            class="bingoWheel"
+            src="svg/BingoMachine.svg"
+            alt="Bingo Machine"
+          />
+
+          <div class=" bingoRolls">
+            <p class="no1"></p>
+
+            <p class="no2"></p>
+            <p class="no3"></p>
+            <p class="no4"></p>
+          </div>
+
+          <button class="startButton">Start bingo</button>
+
+          <div class="myRolls">
+            <p class="no5">
+              -
+            </p>
+            <p class="no6">
+              -
+            </p>
+            <p class="no7">
+              -
+            </p>
+            <p class="no8">
+              -
+            </p>
+            <p class="empty1">X</p>
+            <p class="empty2">X</p>
+            <p class="empty3">X</p>
+            <p class="empty4">X</p>
+            <p class="empty5">X</p>
+          </div>
+        </div>
+
+        <button class="tilmeld">Tilmeld dig</button>
+        <button class="goTo">
+          <a href="https://danskespil.dk/bingo">
+            Gå til bingo
+          </a>
+        </button>
       </div>
-    </template>
+
+      <template id="liveFeedTemp">
+        <div class="dataCard">
+          <div class="dataNavn"></div>
+          <div class="dataBynavn"></div>
+        </div>
+      </template>
+    </div>
 
     <script>
-      const media = "https://music-6420.restdb.io/media";
-      let biglist;
-      const form = document.querySelector("form");
-      const data = {
-        Name: "input name",
-        Email: "description of task"
-      };
-      const postData = JSON.stringify(data);
+       "use srict";
 
-      window.addEventListener("DOMContentLoaded", init);
 
-      function init() {
-        form.elements.submit.disabled = true;
-        get();
-      }
+       const personDataTemp = {
+         fornavn: "navn",
+         efternavn: "efternavn",
+         email: "email",
+         password: "password",
+         tlfnummer: "tlfnummer",
 
-      function post(NewPerson) {
-        fetch("https://music-6420.restdb.io/rest/person-info", {
-          method: "post",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "x-apikey": "5c7ce843cac6621685acbaaa",
-            "cache-control": "no-cache"
-          },
-          body: JSON.stringify(NewPerson)
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data.list[0].message[0]);
-            if (data.status) {
-              console.log("ERROR");
-            } else {
-              showcard(data);
-            }
-          });
-      }
+         cpr: "cpr",
+         bynavn: "",
+         vejnavn: "vejnavn",
+         husnummer: "husnummer",
+         postnummer: "postnummer",
+         land: "land"
+       }
 
-      function get() {
-        fetch("https://music-6420.restdb.io/rest/person-info", {
-          method: "get",
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            "x-apikey": "5c7ce843cac6621685acbaaa",
-            "cache-control": "no-cache"
+       let speakText;
+
+       let person = Object.create(personDataTemp);
+
+       let personData = [];
+
+       let dataChecker = [];
+
+       const form = document.querySelector(".WonForm")
+
+       form.querySelector('input[name="fornavn"]').value = ""
+
+       form.querySelector('input[name="bynavn"]').value = ""
+
+       const formSignup1 = document.querySelector(".Signup1")
+
+       const formSignup2 = document.querySelector(".Signup2")
+
+       window.addEventListener("DOMContentLoaded", init);
+
+       let rolled = 0;
+
+       let LiveList;
+
+       let modal = document.querySelector(".formContainer");
+
+       let modalSignUp = document.querySelector(".formContainerSignup1");
+
+       let modalSignUp2 = document.querySelector(".formContainerSignup2");
+
+       let tilmeldKnap = document.querySelector(".tilmeld")
+
+       let rollButton = document.querySelector(".startButton");
+
+
+
+       function init() {
+         getPersonData()
+         get();
           }
-        })
-          .then(res => res.json())
-          .then(json => {
-            biglist = json;
-            console.table(json);
-            json.forEach(showcard);
-          });
-      }
 
-      function showcard(item) {
-        let clone = document.querySelector("#temp").cloneNode(true).content;
+       function rollDice(){
 
-        clone.querySelector(".name").innerHTML = item.Name;
-        clone.querySelector(".email").textContent = item.Email;
-        document.querySelector(".container").appendChild(clone);
-      }
+       let rolls = [];
 
-      form.elements.email.addEventListener("keyup", () => {
-        if (
-          form.elements.email.validity.valid &&
-          form.elements.email.value !== ""
-        ) {
-          form.elements.submit.disabled = false;
-        } else {
-          form.elements.submit.disabled = true;
+       while(rolls.length<4){
+
+        let = no1 = Math.ceil(Math.random() * 8);
+
+        if(!rolls.includes(no1)){
+
+         rolls.push(no1)
+         }
+
+         }
+       return rolls;
+       }
+
+       document.addEventListener("click", function(event){
+         if (event.target.closest(".Form")) return;
+
+
+         document.querySelector(".formContainer").style.display = "none";
+         console.log("hello")
+       })
+
+       document.querySelector(".content").addEventListener("click",()=>{
+        document.querySelector(".formContainer").style.display = "none";
+       })
+
+       rollButton.addEventListener("click", () => {
+
+        rollButton.style.display = "block"
+         document.querySelector(".formContainer").style.display = "grid";
+
+         let bingoRolls = rollDice();
+         let myRolls = rollDice()
+
+         const t = document.querySelectorAll(".bingoRolls p")
+
+         const t2 = document.querySelectorAll(".myRolls p")
+         let i = 0;
+         let win = 0;
+
+         rolled += 1;
+
+
+        speak(`The first number is coming up`)
+
+         t2.forEach((element, index)=>{
+
+         element.textContent = "-"
+            element.style.backgroundColor = ""
+
+         })
+
+         t.forEach((element, index)=>{
+
+           element.textContent = ""
+           element.style.backgroundColor = ""
+
+         })
+
+         function myLoop () {
+          setTimeout(function () {
+
+          t[i].textContent=bingoRolls[i]
+
+
+          if (i == 0){
+            speak(`and the first number is ${bingoRolls[i]}`)
+          } else if (i == 1){
+            speak(`then we have ${bingoRolls[i]}`)
+          } else if (i == 2){
+            speak(`and then ${bingoRolls[i]}`)
+          } else {
+            speak(`and the last number is ${bingoRolls[i]}`)
+          }
+
+
+           if (myRolls.includes(Number(t[i].textContent))){
+             t[i].style.backgroundColor = "#3cbc8d";
+             win += 1;
+             console.log(win)};
+
+           if (i == 3){
+             t2.forEach((element,index)=>{
+              if (bingoRolls.includes(myRolls[index])){
+                rollButton.style.display ="block";
+
+                console.log (`rolled is ${rolled}`)
+
+                if (rolled >= 3){
+                  signUp();
+                }
+
+                  element.style.backgroundColor = "#3cbc8d"}});
+
+             if (win == 4){
+               winning();
+               console.log("win")}};
+          i++;
+
+          if (i < t.length) {
+            myLoop();
+
+          }
+          }, 4000)};
+
+         myLoop();
+
+         t2.forEach((element, index)=>{
+          element.textContent=myRolls[index]
+         })
+
+       });
+
+       function winning(){
+         modal.style.display = "grid";
+       }
+
+      function signUp() {
+        modalSignUp.style.display = "grid";
+       };
+
+       // rest API Live Feed
+
+
+
+       function get() {
+         fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
+           method: "get",
+           headers: {
+             "Content-Type": "application/json; charset=utf-8",
+           "x-apikey": "5cf21329102f585b7c8536c9",
+            "cache-control": "no-cache"
+            }
+           })
+               .then(res => res.json())
+               .then(json => {
+                 LiveList = json;
+                 console.table(json);
+                 liveDisplay(json);
+               });
+           }
+
+       function getPersonData() {
+         fetch("https://rockstardata-e28c.restdb.io/rest/danskespil", {
+           method: "get",
+           headers: {
+             "Content-Type": "application/json; charset=utf-8",
+           "x-apikey": "5cf21329102f585b7c8536c9",
+            "cache-control": "no-cache"
+            }
+           })
+               .then(res => res.json())
+               .then(json => {
+                dataChecker = json;
+                 console.table(json);
+
+               });
+           }
+
+       function liveDisplay(person){
+           document.querySelector(".liveContainer").textContent = "";
+         for (let i = 0; i < 10; i++){
+                 let nr = person.length - i - 1;
+
+                 let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
+
+                   temp.querySelector(".dataNavn").textContent = `${person[nr].fornavn}`
+                   temp.querySelector(".dataBynavn").textContent = `Fra ${person[nr].bynavn}`
+
+                   document.querySelector(".liveContainer").appendChild(temp);
+               }
+
+             }
+
+       function liveDisplayAdd(person){
+         console.log("something")
+
+
+         let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
+
+         temp.querySelector(".dataNavn").textContent = person.fornavn
+         temp.querySelector(".dataBynavn").textContent = person.bynavn
+
+         document.querySelector(".liveContainer").appendChild(temp);
+
+
         }
-      });
 
-      form.addEventListener("submit", e => {
-        e.preventDefault();
-        //form.elements.submit.disabled = true;
+       form.addEventListener("submit",e =>{
+         e.preventDefault();
 
-        const inputData = {
-          Name: form.elements.name.value,
-          Email: form.elements.email.value
-        };
 
-        for (let i = 0; i < biglist.length; i++) {
-          if (inputData.Email == biglist[i].Email) {
-            console.log(biglist[i].Email);
-            sayHello(biglist[i].Name);
+         person.fornavn = form.elements.fornavn.value
+         person.bynavn = form.elements.bynavn.value
+
+
+
+         console.log(personData)
+
+         if (!form.elements.fornavn.value == "" && !form.elements.bynavn.value == ""){
+           personData.push(person);
+           modal.style.display = "none"
+           console.log(person)
+           post(personData,"minibingovindere")
+
+           modalSignUp.style.display = "grid";
+           formSignup1.querySelector('input[name="fornavn"]').value = person.fornavn;
+
+         }
+
+
+       })
+
+       function post(NewPerson,link) {
+         fetch(`https://rockstardata-e28c.restdb.io/rest/${link}`, {
+           method: "post",
+           headers: {
+             "Content-Type": "application/json; charset=utf-8",
+             "x-apikey": "5cf21329102f585b7c8536c9",
+             "cache-control": "no-cache"
+           },
+           body: JSON.stringify(NewPerson)
+         })
+           .then(res => res.json())
+           .then(data => {
+             console.log("hello");
+             if (data.status) {
+               console.log("ERROR");
+             } else {
+               get();
+             }
+           });
+       }
+
+       // signup forms
+
+       formSignup1.elements.submit.disabled = true;
+       formSignup1.elements.email.value = ""
+
+       formSignup2.querySelector('input[name="submit"]').style.opacity = 1;
+
+       tilmeldKnap.addEventListener("click",()=>{
+
+         modalSignUp.style.display = "grid";
+       })
+
+       formSignup1.elements.email.addEventListener("keyup", () => {
+
+        let rawInput = formSignup1.elements.email.value;
+
+        let inputData = rawInput.trim();
+
+        let error = document.querySelector(".errormessage")
+
+        let real = false
+
+        let notSame = false
+
+        if (
+          formSignup1.elements.email.validity.valid &&
+          formSignup1.elements.email.value !== ""
+        ) {
+          console.log("test")
+          formSignup1.querySelector('input[name="submit"]').style.opacity = 1;
+          real = true;
+          error.textContent = ""
+        } else {
+          formSignup1.querySelector('input[name="submit"]').style.opacity = 0.5;
+          real = false;
+          error.textContent = "*Indtast venligst en rigtig email"
+          formSignup1.elements.submit.disabled = true;
+        }
+
+        for (let i = 0; i < dataChecker.length; i++) {
+          if (inputData == dataChecker[i].email) {
+            console.log(dataChecker[i].email);
+            console.log("user already exist");
+            error.textContent = "*Denne email er allerede i brug"
+            notSame = false;
+            formSignup1.elements.submit.disabled = true;
+            formSignup1.querySelector('input[name="submit"]').style.opacity = 0.5;
             break;
           } else if (
-            inputData.Email !== biglist[i].Email &&
-            i == biglist.length - 1
+
+            inputData !== dataChecker[i].email &&
+            i == dataChecker.length - 1
           ) {
-            post(inputData);
+            if (
+          formSignup1.elements.email.validity.valid &&
+          formSignup1.elements.email.value !== ""
+        ) {
+            formSignup1.querySelector('input[name="submit"]').style.opacity = 1;
+
+            notSame = true
+            error.textContent = ""
             console.log(inputData);
             console.log("user created");
+        }
           }
         }
+
+        if (real == true && notSame == true) {
+          formSignup1.elements.submit.disabled = false;
+        }
+
       });
 
-      function sayHello(name) {
-        console.log(`hello ${name}`);
+       formSignup1.addEventListener("submit",e=> {
+         e.preventDefault();
+
+         person.fornavn = formSignup1.elements.fornavn.value
+         person.efternavn = formSignup1.elements.efternavn.value
+         person.email = formSignup1.elements.email.value
+         person.tlfnummer = formSignup1.elements.tlfnummer.value
+         person.password = formSignup1.elements.password.value
+
+         modalSignUp.style.display = "none";
+         modalSignUp2.style.display = "grid";
+         formSignup2.querySelector('input[name="bynavn"]').value = person.bynavn;
+
+         console.log(person)
+       });
+
+       formSignup2.addEventListener("submit",e=> {
+         e.preventDefault();
+
+         person.cpr = formSignup2.elements.cpr.value
+         person.land = formSignup2.elements.land.value
+         person.bynavn = formSignup2.elements.bynavn.value
+         person.vejnavn = formSignup2.elements.vejnavn.value
+         person.husnummer = formSignup2.elements.husnummer.value
+         person.postnummer = formSignup2.elements.postnummer.value
+
+         personData = []
+
+         personData.push(person);
+
+         post(personData,"danskespil")
+
+         console.log(personData);
+
+         modalSignUp2.style.display = "none"
+
+      })
+
+
+      // text to speach
+
+      function speak(word){
+       window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
       }
     </script>
   </body>
