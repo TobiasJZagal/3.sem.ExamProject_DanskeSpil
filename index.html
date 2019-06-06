@@ -89,13 +89,13 @@
 
       .WonForm {
         display: grid;
-        grid-template: 10px 0.6fr 40px 40px 40px 0.5fr 40px 1fr / 30px 1fr 30px;
+        grid-template: 10px 0.6fr 40px 40px 40px 0.5fr 40px 1fr / 10px 30px 1fr 30px 10px;
       }
 
       .formWonH1 {
         color: white;
         padding-left: 50px;
-        grid-area: 2/2/2/2;
+        grid-area: 2/3/2/3;
       }
 
       .formSignupH1 {
@@ -110,7 +110,7 @@
       .formName {
         text-align: center;
 
-        grid-area: 4/2/4/2;
+        grid-area: 4/3/4/3;
       }
 
       input[type="text"] {
@@ -164,13 +164,13 @@
 
       .formLocation {
         text-align: center;
-        grid-area: 6/2/6/2;
+        grid-area: 6/3/6/3;
       }
 
       .formSubmit {
         text-align: center;
 
-        grid-area: 8/2/8/2;
+        grid-area: 8/3/8/3;
       }
 
       input[type="submit"] {
@@ -486,7 +486,7 @@
       }
 
       .bingoWheel {
-        height: 150%;
+        height: 300px;
         grid-area: 2/9/4/10;
       }
 
@@ -516,6 +516,11 @@
       .tilmeld:hover {
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
         color: rgb(78, 36, 231);
+      }
+
+      .bgColor{
+        background-color: #a0d323;
+        grid-area: 1/1/4/11;
       }
 
       .goTo {
@@ -548,10 +553,52 @@
         box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
         color: rgb(78, 36, 231);
       }
+
+      .closeButton {
+           font-size: 1em;
+           color: white;
+           margin-top: 10px;
+           border-radius: 50%;
+           height: 30px;
+           padding-right: 10px;
+           background-color: #feb700;
+           border-color: #feb700;
+           grid-area: 1/4/1/4;
+       }
+
+       .closeButton1 {
+           font-size: 1em;
+           color: white;
+           margin-top: 10px;
+           border-radius: 50%;
+           height: 30px;
+           width: 30px;
+           padding-right: 10px;
+           background-color: #feb700;
+           border-color: #feb700;
+           grid-area: 2/8/2/10;
+       }
+
+       .closeButton2 {
+           font-size: 1em;
+           color: white;
+           margin-top: 10px;
+           border-radius: 50%;
+           height: 30px;
+           width: 30px;
+           padding-right: 10px;
+           background-color: #feb700;
+           border-color: #feb700;
+           grid-area: 2/8/2/10;
+       }
+
     </style>
 
     <div class="formContainer">
       <form name="WonForm" class="Form WonForm">
+        
+        <button type="button" class="closeButton">X</button>
+        
         <h1 class="formWonH1">
           Tillykke du har vundet <br />
           Bliv nævt på vores Live Feed!
@@ -579,6 +626,7 @@
 
     <div class="formContainerSignup1">
       <form name="Signup1" class="FormSignup Signup1">
+          <button type="button" class="closeButton1">X</button>
         <h1 class="formSignupH1">
           Sign Up
         </h1>
@@ -624,6 +672,7 @@
 
     <div class="formContainerSignup2">
       <form name="Signup2" class="FormSignup Signup2">
+          <button type="button" class="closeButton2">X</button>
         <h1 class="formSignupH1">
           Tilmeld dig
         </h1>
@@ -692,6 +741,7 @@
         </div>
 
         <div class="bingoSpil">
+          <div class="bgColor"></div>
           <div class="table"></div>
           <div class="miniBingo">
             <img src="svg/minibingo.svg" alt="miniBingo" />
@@ -804,8 +854,13 @@
 
        let rollButton = document.querySelector(".startButton");
 
+       let closeButtonWon = document.querySelector(".closeButton");
 
+       let closeButtonSignup1 = document.querySelector(".closeButton1");
 
+       let closeButtonSignup2 = document.querySelector(".closeButton2");
+
+       
        function init() {
          getPersonData()
          get();
@@ -836,13 +891,10 @@
          console.log("hello")
        })
 
-       document.querySelector(".content").addEventListener("click",()=>{
-        document.querySelector(".formContainer").style.display = "none";
-       })
 
        rollButton.addEventListener("click", () => {
 
-        rollButton.style.display = "block"
+        rollButton.style.display = "none"
          document.querySelector(".formContainer").style.display = "grid";
 
          let bingoRolls = rollDice();
@@ -932,13 +984,11 @@
          modal.style.display = "grid";
        }
 
-      function signUp() {
+       function signUp() {
         modalSignUp.style.display = "grid";
        };
 
        // rest API Live Feed
-
-
 
        function get() {
          fetch("https://rockstardata-e28c.restdb.io/rest/minibingovindere", {
@@ -989,19 +1039,6 @@
 
              }
 
-       function liveDisplayAdd(person){
-         console.log("something")
-
-
-         let temp = document.querySelector("#liveFeedTemp").cloneNode(true).content;
-
-         temp.querySelector(".dataNavn").textContent = person.fornavn
-         temp.querySelector(".dataBynavn").textContent = person.bynavn
-
-         document.querySelector(".liveContainer").appendChild(temp);
-
-
-        }
 
        form.addEventListener("submit",e =>{
          e.preventDefault();
@@ -1167,6 +1204,22 @@
       function speak(word){
        window.speechSynthesis.speak(new SpeechSynthesisUtterance(word));
       }
-    </script>
+   
+      // close buttons
+
+      closeButtonWon.addEventListener("click", ()=>{
+        modal.style.display = "none";
+      });
+
+      closeButtonSignup1.addEventListener("click", ()=>{
+        modalSignUp.style.display = "none";
+      });
+
+      closeButtonSignup2.addEventListener("click", ()=>{
+        modalSignUp2.style.display = "none";
+      });
+
+      
+   </script>
   </body>
 </html>
