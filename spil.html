@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .testBg {
+        background-color: white;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .index {
+        display: grid;
+        grid-template: 30px 60px 30px 500px 20px 60px 60px 50px /80px 200px 50px 30px 220px 100px 220px 1fr 130px;
+        height: 100%;
+      }
+
+      .liveFeed {
+        background-color: red;
+        grid-area: 4/2/7/4;
+      }
+
+      .bingoSpil {
+        background-color: blue;
+        grid-area: 4/5/4/9;
+      }
+
+      .header {
+        margin: 0;
+        grid-area: 2/5/2/9;
+        background-color: green;
+      }
+
+      .tilmeld {
+        grid-area: 6/5/6/5;
+      }
+
+      .goTo {
+        grid-area: 6/7/6/7;
+      }
+    </style>
+    <div class="index">
+      <h1 class="header">Bingo</h1>
+      <div class="liveFeed"></div>
+      <div class="bingoSpil">
+        <div class="testBg bingoRolls">
+          <p class="no1">
+            test
+          </p>
+          <p class="no2">
+            test
+          </p>
+          <p class="no3">
+            test
+          </p>
+          <p class="no4">
+            test
+          </p>
+        </div>
+        <button class="startButton">Roll</button>
+        <div class="testBg myRolls">
+          <p class="no5">
+            test
+          </p>
+          <p class="no6">
+            test
+          </p>
+          <p class="no7">
+            test
+          </p>
+          <p class="no8">
+            test
+          </p>
+        </div>
+      </div>
+      <button class="tilmeld">Tilmeld</button>
+      <button class="goTo">Go til bingo</button>
+    </div>
+    <script>
+      "use srict";
+
+      let rollButton = document.querySelector(".startButton");
+
+
+
+      function rollDice(){
+        let rolls = [];
+        while(rolls.length<4){
+          let = no1 = Math.ceil(Math.random() * 8);
+          if(!rolls.includes(no1)){
+            rolls.push(no1)
+          }
+        }
+        return rolls;
+      }
+
+
+      rollButton.addEventListener("click", () => {
+
+
+
+        let bingoRolls = rollDice();
+        let myRolls = rollDice()
+
+        const t = document.querySelectorAll(".bingoRolls p")
+        t.forEach((element, index)=>{
+          element.textContent=bingoRolls[index]
+        })
+        const t2 = document.querySelectorAll(".myRolls p")
+
+        t2.forEach((element, index)=>{
+
+
+          element.style.backgroundColor = ""
+
+         })
+
+
+        t2.forEach((element, index)=>{
+          element.textContent=myRolls[index]
+        })
+
+        t2.forEach((element, index)=>{
+          //console.log(element, myRolls[index])
+          if(bingoRolls.includes(myRolls[index])){
+            element.style.backgroundColor = "green"
+          }
+        })
+
+        document.querySelector(".no1").textContent = no1;
+        document.querySelector(".no2").textContent = no2;
+        document.querySelector(".no3").textContent = no3;
+        document.querySelector(".no4").textContent = no4;
+
+
+      });
+    </script>
+  </body>
+</html>

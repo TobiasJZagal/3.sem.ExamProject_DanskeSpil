@@ -108,7 +108,14 @@
           body: JSON.stringify(NewPerson)
         })
           .then(res => res.json())
-          .then(data => showcard(data));
+          .then(data => {
+            console.log(data.list[0].message[0]);
+            if (data.status) {
+              console.log("ERROR");
+            } else {
+              showcard(data);
+            }
+          });
       }
 
       function get() {
